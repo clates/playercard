@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css'
+import PlayerCard from './PlayerCard/PlayerCard';
 
 export default function Home() {
 
@@ -9,6 +10,11 @@ export default function Home() {
   const [teams, setTeams] = useState([]);
 
   useEffect(()=>{
+    fetchPlayerData();
+    fetchTeamData();
+  }, [])
+
+  const fetchPlayerData = () => {
     fetch("api/players", {
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +27,10 @@ export default function Home() {
       .then((json) => {
         setPlayers(json);
       });
-    fetch("api/players", {
+  }
+
+  const fetchTeamData = () => {
+    fetch("api/teams", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -33,7 +42,7 @@ export default function Home() {
       .then((json) => {
         setTeams(json);
       });
-  })
+  }
   
 
   return (
@@ -44,20 +53,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-        <h1>Players</h1>
-        {players.map(x => <div>{JSON.stringify(x)}</div>)}
-        <h1>Teams</h1>
-        {teams.map(x => <div>{JSON.stringify(x)}</div>)}
-      </main>
+      {
+        teams && players && 
+          <>
+            <h1>Players</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-10 xl-grid-cols-4 gap-y-10 gap-x-6">
+              {players.slice(0, 10).map(x => <PlayerCard key={x.slug} team={teams.filter(team => team.ta === x.ta)[0]} {...x} />)}
+            </div>
+            <h1>Teams</h1>
+          </>
+      }
 
       <footer className={styles.footer}>
         <a
