@@ -1,5 +1,3 @@
-export default function Loading({}){
-    return (
-        <img src={"/basketball.svg"} />
-    )
+export default function Loading({}) {
+  return <img src={"/basketball.svg"} />;
 }

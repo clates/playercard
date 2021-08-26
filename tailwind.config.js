@@ -4,17 +4,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans-serif': ["Roboto", "sans-serif"],
+        "sans-serif": ["Roboto", "sans-serif"],
       },
     },
     screens: {
-      'lg': '960px',
-      'md': {'max': '959px'},
-      'sm': {'max': '639px'}
+      lg: "960px",
+      md: { max: "959px" },
+      sm: { max: "639px" },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

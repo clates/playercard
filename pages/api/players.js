@@ -1,5 +1,4 @@
-
-import players from './data/players.json'
+import players from "./data/players.json";
 export default function handler(req, res) {
-        res.status(200).json(players)
-    }
+  res.status(200).json(players);
+}
