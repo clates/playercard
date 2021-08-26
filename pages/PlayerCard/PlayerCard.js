@@ -4,32 +4,32 @@ export default function PlayerCard({
     return(
         <div className="relative overflow-hidden shadow-lg">
             <div className="absolute inset-0">
-                <img style={{filter: 'grayscale(1)'}} className="absolute max-h-80 -top-20 -left-20 opacity-20" src={team.logo}/>
-                <img className="absolute max-h-10 top-2 right-2 opacity-100 " src={team.logo}/>
+                <img style={{filter: 'grayscale(1)'}} className="absolute h-96 -top-24 -left-10 opacity-5" src={team.logo}/>
+                <img className="absolute h-12 top-2 right-2 opacity-100 " src={team.logo}/>
             </div>
             <div className="relative">
                 <div className="divide-y-4">
-                    <div className="relative grid grid-cols-2">
+                    <div className="relative grid grid-cols-2 mt-3">
                         <img src={headshot}/>
-                        <div className="flex flex-col m-0">
-                            <p className="text-gray-400">#{num} | {pos}</p>
-                            <h1 className="text-xl font-bold">{fn}</h1>
-                            <h1 className="text-xl font-bold">{ln}</h1>
+                        <div className="flex justify-center flex-col m-0">
+                            <p className="text-gray-500">#{num} | {pos}</p>
+                            <h1 className="text-xl font-extrabold">{fn}</h1>
+                            <h1 className="text-xl font-extrabold">{ln}</h1>
                         </div>
                     </div>
-                    <div style={{borderColor: team.color}}>
-                        <div className="grid grid-cols-3">
-                            <div>
-                                <p className="">PPG</p>
-                                <p className="text-xl font-bold">{pts}</p>
+                    <div style={{borderColor: team.color}} className="bg-white">
+                        <div className="grid grid-flow-col auto-cols-auto text-center divide-x-2">
+                            <div className="p-3">
+                                <div className="text-lg -mb-1 -mt-1">PPG</div>
+                                <div className="text-2xl font-bold">{pts}</div>
                             </div>
-                            <div>
-                                <p className="">RPG</p>
-                                <p className="text-xl font-bold">{reb}</p>
+                            <div className="p-3">
+                                <p className="text-lg -mb-1 -mt-1">RPG</p>
+                                <p className="text-2xl font-bold">{reb}</p>
                             </div>
-                            <div>
-                                <p className="">APG</p>
-                                <p className="text-xl font-bold">{ast}</p>
+                            <div className="p-3">
+                                <p className="text-lg -mb-1 -mt-1">APG</p>
+                                <p className="text-2xl font-bold">{ast}</p>
                             </div>
                         </div>
                     </div>
